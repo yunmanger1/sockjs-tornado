@@ -18,7 +18,7 @@ class XhrPollingTransport(pollingbase.PollingTransportBase):
     name = 'xhr'
 
     @asynchronous
-    def post(self, session_id):
+    def post(self, session_id, *args, **kwargs):
         # Start response
         self.preflight()
         self.handle_session_cookie()
@@ -55,7 +55,7 @@ class XhrPollingTransport(pollingbase.PollingTransportBase):
 
 
 class XhrSendHandler(pollingbase.PollingTransportBase):
-    def post(self, session_id):
+    def post(self, session_id, *args, **kwargs):
         self.preflight()
         self.handle_session_cookie()
         self.disable_cache()

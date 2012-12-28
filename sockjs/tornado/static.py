@@ -36,7 +36,7 @@ IFRAME_TEXT = '''<!DOCTYPE html>
 
 class IFrameHandler(BaseHandler):
     """SockJS IFrame page handler"""
-    def get(self):
+    def get(self, *args, **kwargs):
         data = IFRAME_TEXT % self.server.settings['sockjs_url']
 
         hsh = hashlib.md5(data).hexdigest()
@@ -64,7 +64,7 @@ class GreetingsHandler(BaseHandler):
     def initialize(self, server):
         self.server = server
 
-    def get(self):
+    def get(self, *args, **kwargs):
         self.enable_cache()
 
         self.set_header('Content-Type', 'text/plain; charset=UTF-8')
@@ -83,7 +83,7 @@ class ChunkingTestHandler(PreflightHandler):
         self.io_loop = server.io_loop
 
     @asynchronous
-    def post(self):
+    def post(self, *args, **kwargs):
         self.preflight()
         self.set_header('Content-Type', 'application/javascript; charset=UTF-8')
 
@@ -119,7 +119,7 @@ class InfoHandler(PreflightHandler):
         self.server = server
         self.access_methods = 'OPTIONS, GET'
 
-    def get(self):
+    def get(self, *args, **kwargs):
         self.preflight()
         self.disable_cache()
         self.set_header('Content-Type', 'application/json; charset=UTF-8')

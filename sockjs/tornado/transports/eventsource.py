@@ -15,7 +15,7 @@ class EventSourceTransport(streamingbase.StreamingTransportBase):
     name = 'eventsource'
 
     @asynchronous
-    def get(self, session_id):
+    def get(self, session_id, *args, **kwargs):
         # Start response
         self.preflight()
         self.handle_session_cookie()

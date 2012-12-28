@@ -31,7 +31,7 @@ class RawWebSocketTransport(websocket.WebSocketHandler, base.BaseTransportMixin)
         self.session = None
         self.active = True
 
-    def open(self):
+    def open(self, *args, **kwargs):
         # Stats
         self.server.stats.on_conn_opened()
 

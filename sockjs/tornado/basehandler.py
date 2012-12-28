@@ -26,6 +26,11 @@ class BaseHandler(RequestHandler):
         self.server = server
         self.logged = False
 
+    def _execute(self, transforms, *args, **kwargs):
+        self.args = args
+        self.kwargs = kwargs
+        super(BaseHandler, self)._execute(transforms, *args, **kwargs)
+
     # Statistics
     def prepare(self):
         """Increment connection count"""

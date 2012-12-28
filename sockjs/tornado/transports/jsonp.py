@@ -18,7 +18,7 @@ class JSONPTransport(pollingbase.PollingTransportBase):
     name = 'jsonp'
 
     @asynchronous
-    def get(self, session_id):
+    def get(self, session_id, *args, **kwargs):
         # Start response
         self.handle_session_cookie()
         self.disable_cache()
@@ -69,7 +69,7 @@ class JSONPTransport(pollingbase.PollingTransportBase):
 
 
 class JSONPSendHandler(pollingbase.PollingTransportBase):
-    def post(self, session_id):
+    def post(self, session_id, *args, **kwargs):
         self.preflight()
         self.handle_session_cookie()
         self.disable_cache()

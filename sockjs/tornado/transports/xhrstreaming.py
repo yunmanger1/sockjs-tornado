@@ -15,7 +15,7 @@ class XhrStreamingTransport(streamingbase.StreamingTransportBase):
     name = 'xhr_streaming'
 
     @asynchronous
-    def post(self, session_id):
+    def post(self, session_id, *args, **kwargs):
         # Handle cookie
         self.preflight()
         self.handle_session_cookie()
